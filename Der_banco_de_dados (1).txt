@@ -1,0 +1,153 @@
+
+ESTRUTURA MER ( MODELO ENTIDADE RELACIONAMENTO) REFIMAX - MESA POSTA E DECORAÇÕES  
+Conheça a M.R.D  - Saúde e corretora de Seguros Ltda. Empresa privada atuando a 20 anos no mercado com 24 funcionários focados nas vendas de seguro de saúde, seguro de vida, seguro de carro e residencial, sendo 20 corretores para essas vendas (trabalhamos também com freelance, em média 8 a 10 pessoas) Há também a equipe administrativa com 2 funcionários e 2 financeiros.
+
+A empresa oferecer 6 serviços prestados, com aproximadamente de 90 a 110 contratos por dia ( estimativa de 1500 a 1900 contratos por mês ), em torno de 25.000 a 30.000 mil clientes ativos   Regras de Negócio Gerais e Clientes
+
+Cadastro e Onboarding de Cliente 
+( Pessoa física e Jurídica )
+
+O sistema de gestão da seguradora deve assegurar a integridade dos dados cadastrais desde a entrada do lead ou proposta até a emissão da apólice, diferenciando o fluxo conforme o tipo de cliente
+
+Cadastro de Pessoa Física (PF): Obrigatório o preenchimento de CPF válido, nome completo, data de nascimento, endereço residencial completo, e-mail, telefone de contato e dados socioeconômicos ou profissionais (quando exigido pelo perfil de risco do produto, especialmente para Seguro Saúde).
+
+Cadastro de Pessoa Jurídica (PJ): O sistema deve permitir o cadastro apenas mediante CNPJ ativo e regular junto à Receita Federal. Os dados obrigatórios incluem razão social, nome fantasia, CNAE, endereço fiscal e comercial, contatos do responsável legal/financeiro e informações contábeis básicas para análise de risco empresarial (ex: faturamento presumido para seguros corporativos/saúde PME).
+
+Unicidade Cadastral: O sistema deve realizar validação em tempo real para evitar duplicidade de CPFs ou CNPJs, vinculando todas as apólices ativas de saúde, residencial e automóvel a um único ID de cliente centralizado (visão 360°).
+
+Análise de Risco, Crédito e Bloqueio de Apólices 
+A concessão, renovação ou emissão de coberturas para os ramos de Saúde, Residencial e Automóvel está condicionada a rigorosas regras de subscrição de risco e adimplência financeira.
+
+Análise de Crédito e Inadimplência: Todo cliente (PF ou PJ) possui um perfil de crédito e histórico financeiro atrelado. Caso haja parcelas de prêmio em atraso superior ao limite de tolerância (ex: 10 dias úteis) ou restrições ativas em órgãos de proteção ao crédito (Serasa/SPC), o sistema deve sinalizar automaticamente o cadastro.
+
+Bloqueio de Novas Vendas e Renovações: Clientes com pendências financeiras ativas ou restrições cadastrais severas ficam impedidos de emitir novas apólices, realizar upgrades em planos de saúde ou adicionar novos bens (veículos/imóveis) às apólices existentes até a regularização do débito.
+
+Subscrição de Risco Automatizada.
+Auto: Verificação automática de CEP de pernoite, histórico de sinistralidade da CNH e restrições do veículo na base de dados de gravames/roubo.
+Residencial: Validação do tipo de construção, localização de risco (áreas de alagamento ou restrição de segurança) e valor segurado da edificação
+Saúde: Aplicação de questionário de saúde (Declaração de Saúde) obrigatório, direcionando casos com comorbidades graves para análise manual da junta médica interna antes da aceitação.
+
+Diretrizes de Atendimento e Gestão de Sinistros 
+O atendimento ao segurado deve seguir padrões de qualidade, agilidade e clareza, dividindo-se entre canais digitais e centrais de suporte especializado
+
+Omnichannel e Roteirização: O atendimento deve integrar os canais de voz (ligação ), presencial e por chat ( WhatsApp). O sistema deve direcionar o segurado com base no produto:
+
+Seguro Auto e Residencial: Foco em emergências, assistência 24h e abertura rápida de sinistro (colisão, guincho, encanador, eletricista).
+
+Seguro Saúde: Foco em rede credenciada, autorização de exames/procedimentos e orientações de reembolso.
+
+SLA (Service Level Agreement) de Resposta:
+Abertura de sinistro de emergência (Auto/Residencial): Atendimento imediato em até 5 minutos na fila prioritária de assistência 24h.
+Autorização de procedimentos de saúde simples/ambulatoriais: Até 24 horas úteis.
+Análise de indenização de sinistros materiais: Conclusão da análise documental e parecer em até 15 dias corridos (conforme regulamentação do setor).
+
+ Tratativa de Cancelamentos e Reclamações: Todo pedido de cancelamento de apólice deve passar por uma régua de retenção automatizada, calculando prêmios a devolver (pro rata die) e registrando o motivo principal para melhoria contínua dos produtos
+
+
+COLABORADORES (Equipe Comercial e Interna)
+ ⁠id_colaborador⁠ (PK)
+ ⁠nome⁠
+ ⁠cpf⁠
+ ⁠data_nascimento⁠
+ ⁠endereco⁠
+ ⁠email⁠
+ ⁠telefone⁠
+ ⁠comissao⁠ (Percentual de comissão sobre o valor do contrato)
+ ⁠susep_registro⁠ (Registro profissional na SUSEP, aplicável para corretores parceiros ou internos)
+
+CLIENTES_PJ (Segurados - Pessoa Jurídica)
+ ⁠id_cliente⁠ (PK)
+ ⁠razao_social⁠
+ ⁠cnpj⁠ (Obrigatório e único)
+ ⁠ie⁠ (Inscrição Estadual)
+ ⁠endereco⁠
+ ⁠email⁠
+ ⁠telefone⁠
+ ⁠limite_credito⁠ (Limite financeiro para emissão e faturamento de apólices corporativas, como Saúde PME ou Frotas)
+ ⁠cadastro_ativo⁠ (Status: Ativo / Bloqueado por inadimplência ou restrição Serasa
+
+CLIENTES_PF (Segurados - Pessoa Física )
+
+⁠id_cliente⁠ (PK)
+⁠nome_completo⁠
+⁠cpf⁠ (Obrigatório e único)
+⁠rg⁠ (Registro Geral / Identidade)
+⁠data_nascimento⁠ (Essencial para cálculo de risco e prêmio em seguros de Vida, Auto ou Saúde)
+⁠endereco⁠
+⁠email⁠
+⁠telefone⁠
+⁠limite_credito⁠ (Limite financeiro para parcelamento próprio ou financiamento de prêmios de apólices)
+⁠cadastro_ativo⁠ (Status: Ativo / Bloqueado por inadimplência ou restrição cadastral)
+
+RAMOS_SEGURO (Categorias) 
+
+ id_ramo⁠ (PK)
+ ⁠nome_ramo⁠ (Ex: Seguro Saúde, Seguro Automóvel, Seguro Residencial)
+
+PRODUTOS_SEGURO (Planos, Coberturas e Pacotes )
+ ⁠id_produto⁠ (PK)
+ ⁠codigo_plano⁠ (Código único de identificação do plano/cobertura, equivalente ao SKU)
+ ⁠descricao⁠ (Detalhes do plano, limites máximos de indenização e franquias)
+ ⁠premio_base⁠ (Preço base do seguro/prêmio cobrado, substituindo o preço de venda)
+ ⁠id_ramo⁠ (FK) -> Relacionado à tabela de Ramos de Seguro
+APOLICES / PROPOSTAS
+ ⁠id_apolice⁠ (PK)
+ ⁠numero_apolice⁠ (Número oficial da apólice registrada)
+ ⁠data_emissao⁠
+ ⁠inicio_vigencia⁠
+ ⁠fim_vigencia⁠
+ ⁠valor_premio_total⁠ (Valor total do seguro contratado)
+ ⁠desconto_aplicado⁠
+ ⁠aprovacao_gerencial⁠ (S/N para descontos comerciais ou subscrições de risco acima da alçada padrão)
+ ⁠forma_pagamento⁠ (Ex: Boleto PJ, Cartão Corporativo, Débito em Conta)
+ ⁠status_apolice⁠ (Ex: Em Análise de Risco / Underwriting, Vigente, Cancelada, Inadimplente)
+ ⁠id_cliente⁠ (FK)
+ ⁠id_colaborador⁠ (FK) (Corretor ou Vendedor interno responsável pela venda)
+PRESTADORES_SERVICO 
+No setor de seguros, os parceiros estratégicos são a rede credenciada de atendimento (oficinas mecânicas para automóveis, prestadores de assistência residencial e hospitais/clínicas para saúde).
+ ⁠id_prestador⁠ (PK)
+ ⁠razao_social⁠
+ ⁠cnpj⁠
+ ⁠ie⁠
+ ⁠especialidade⁠ (Ex: Oficina Credenciada Auto, Rede Hospitalar Saúde, Assistência 24h Residencial)
+ ⁠email⁠
+ ⁠endereco⁠
+ ⁠telefone⁠
+
+SINISTROS 
+Em vez de registrar compras de mercadorias para estoque, uma seguradora registra eventos de sinistros (acionamentos de seguro, colisões, reparos residenciais ou pedidos de reembolso de saúde).
+ ⁠id_sinistro⁠ (PK)
+ ⁠numero_sinistro⁠
+ ⁠data_ocorrencia⁠
+ ⁠data_registro⁠
+ ⁠id_apolice⁠ (FK)
+ ⁠id_prestador⁠ (FK) (Prestador ou oficina/clínica encarregada do atendimento)
+ ⁠valor_indenizacao⁠ (Custo financeiro do sinistro ou reembolso pago)
+ ⁠status_sinistro⁠ (Ex: Aberto, Em Análise, Regulado, Pago, Encerrado)
+ 
+
+Relacionamentos e Cardinalidades
+
+CLIENTE faz PROPOSTA
+Um Cliente pode fazer várias Propostas (1:N).
+Uma Proposta pertence a apenas um Cliente (1:1).
+
+CORRETOR atende PROPOSTA
+Um Corretor/Colaborador pode gerenciar várias Propostas (1:N).
+Uma Proposta é atendida por apenas um Corretor (1:1).
+
+PROPOSTA contém ITEM_COBERTURA
+Uma Proposta possui um ou vários Itens de Cobertura (1:N).
+Um Item de Cobertura pertence a uma única Proposta (1:1).
+
+PRODUTO_SEGURO está em PROPOSTA
+Um Produto de Seguro pode estar em vários Itens de Propostas (1:N).
+Um Item de Proposta refere-se a apenas um Produto de Seguro (1:1).
+
+RAMO_SEGURO possui PRODUTOS_SEGURO
+Um Ramo de Seguro possui vários Produtos (1:N).
+Um Produto de Seguro pertence a um Ramo (1:1).
+
+SEGURADORA gera EXTRATO_COMISSAO
+Uma Seguradora envia vários Extratos de Comissões (1:N).
+O repasse gera a movimentação financeira da comissão do Produto (1:N).
