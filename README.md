@@ -1,5 +1,3 @@
-# MDR-Banco-de-dados
-
 ## M.R.D Saúde Corretora de Seguros Ltda.
 Modelo Entidade-Relacionamento (MER) e Dicionário de Dados
 
