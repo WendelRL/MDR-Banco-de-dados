@@ -645,6 +645,169 @@ Em vez de registrar compras de mercadorias para estoque, uma seguradora registra
 
 Relacionamentos e Cardinalidades
 
+
+# Modelo Entidade-Relacionamento (MER)
+
+> Documento gerado a partir do diagrama `Modelo_-_Diagrama_-_M_D.brM3` (brModelo).
+> Legenda: 🔑 = identificador (chave primária) | ○ = atributo comum.
+
+---
+
+## 1. Entidades e Atributos
+
+### COLABORADORES
+| Atributo | Tipo |
+|---|---|
+| 🔑 ID Colaborador | Identificador |
+| Nome | Atributo |
+| CPF | Atributo |
+| Telefone | Atributo |
+| E-mail | Atributo |
+| Endereço | Atributo |
+| Cargo | Atributo |
+| Data_Nascimento | Atributo |
+| Salario | Atributo |
+
+### CLIENTE
+| Atributo | Tipo |
+|---|---|
+| 🔑 ID_Cliente | Identificador |
+| Nome/Razão Social | Atributo |
+| CPF/CNPJ | Atributo |
+| Data_Nascimento | Atributo |
+| Endereço | Atributo |
+| Contato | Atributo |
+| Dados_Socioeconomicos | Atributo |
+
+`CLIENTE` é uma **entidade generalizada**, especializada em `PESSOA FÍSICA` e `PESSOA JURÍDICA` (relação de especialização/herança, representada pelo triângulo no diagrama).
+
+### PESSOA FÍSICA *(especialização de CLIENTE)*
+| Atributo |
+|---|
+| CPF |
+| Nome Completo |
+| Data Nascimento |
+| Endereço Completo |
+| E-mail |
+| Telefone |
+| Profissão |
+
+### PESSOA JURÍDICA *(especialização de CLIENTE)*
+| Atributo |
+|---|
+| CNPJ |
+| Razão Social |
+| Nome Fantasia |
+| CNAE |
+| Endereço_Fiscal |
+| Endereço_Comercial |
+| Contato_Responsável |
+| Informações_Contábeis |
+
+### APÓLICE
+| Atributo | Tipo |
+|---|---|
+| 🔑 ID_Apólice | Identificador |
+| Número_Apólice | Atributo |
+| Data_Emissão | Atributo |
+| Data_Vencimento | Atributo |
+| Valor_Prêmio | Atributo |
+| Status | Atributo |
+| Forma_Pagamento | Atributo |
+
+### PRODUTO
+| Atributo | Tipo |
+|---|---|
+| 🔑 ID_Produto | Identificador |
+| Tipo | Atributo |
+| Descrição | Atributo |
+| Cobertura | Atributo |
+| Valor_Segurado | Atributo |
+
+### SINISTRO
+| Atributo | Tipo |
+|---|---|
+| 🔑 ID_Sinistro | Identificador |
+| Data_Ocorrência | Atributo |
+| Tipo_Sinistro | Atributo |
+| Descrição | Atributo |
+| Status | Atributo |
+| Valor_Indenização | Atributo |
+
+### ATENDIMENTO
+| Atributo | Tipo |
+|---|---|
+| 🔑 ID_Atendimento | Identificador |
+| Data_Hora | Atributo |
+| Tipo_Canal | Atributo |
+| Descrição | Atributo |
+| Status | Atributo |
+| SLA_Previsão | Atributo |
+| SLA_Realizado | Atributo |
+
+### CANAL
+| Atributo | Tipo |
+|---|---|
+| 🔑 ID_Canal | Identificador |
+| Tipo | Atributo |
+| Descrição | Atributo |
+| Contato | Atributo |
+
+### EQUIPE
+Entidade sem atributos detalhados no diagrama original (apenas o nome da entidade).
+
+### AVALIAÇÃO DE RISCO
+| Atributo | Tipo |
+|---|---|
+| 🔑 ID_Avaliação | Identificador |
+| Tipo_Produto | Atributo |
+| Resultado | Atributo |
+| Data_Avaliação | Atributo |
+| Observações | Atributo |
+
+### CRÉDITO
+| Atributo | Tipo |
+|---|---|
+| 🔑 ID_Credito | Identificador |
+| Score | Atributo |
+| Status | Atributo |
+| Limite_Credito | Atributo |
+| Restrições | Atributo |
+
+---
+
+## 2. Relacionamentos e Cardinalidades
+
+| Entidade A | Cardinalidade A | Relacionamento | Cardinalidade B | Entidade B |
+|---|:---:|---|:---:|---|
+| COLABORADORES | (1,n) | **atua_em** | (1,1) | CLIENTE |
+| COLABORADORES | (1,n) | **POSSUI** | — | EQUIPE |
+| EQUIPE | (1,n) | **REALIZA** | (0,n) | AVALIAÇÃO DE RISCO |
+| AVALIAÇÃO DE RISCO | (1,1) | **Gera** | (0,1) | CRÉDITO |
+| CLIENTE | (1,n) | **Possui** | (0,n) | APÓLICE |
+| APÓLICE | (0,n) | **é do** | (0,n) | PRODUTO |
+| APÓLICE | (1,n) | **Tem** | (1,1) | SINISTRO |
+| SINISTRO | (1,n) | **Gera atendimento** | (0,n) | ATENDIMENTO |
+| ATENDIMENTO | (1,1) | **Utiliza** | (1,n) | CANAL |
+| CLIENTE | — | **Especialização (herança)** | — | PESSOA FÍSICA / PESSOA JURÍDICA |
+
+---
+
+## 3. Resumo das Regras de Negócio (interpretação das cardinalidades)
+
+- Um **colaborador** atua em **um único cliente** (1,1), enquanto um **cliente** pode ter **vários colaboradores** atuando sobre ele (1,n).
+- Um **colaborador** pode pertencer a uma ou mais **equipes**; cada **equipe** realiza uma ou mais **avaliações de risco**.
+- Cada **avaliação de risco** gera **no máximo um crédito** (0,1), e cada **crédito** está associado a exatamente **uma avaliação** (1,1).
+- Um **cliente** pode possuir **várias apólices** (0,n), e uma **apólice** pertence a **um cliente** (1,n do lado cliente).
+- Uma **apólice** está associada a **um ou mais produtos**, e um **produto** pode estar associado a **várias apólices** (relação N:N — "é do").
+- Uma **apólice** pode ter **vários sinistros** (1,n), mas cada **sinistro** está vinculado a **uma única apólice** (1,1).
+- Um **sinistro** pode gerar **vários atendimentos** (0,n), mas cada **atendimento** está vinculado a **um único sinistro** (1,1).
+- Um **atendimento** utiliza **um único canal** (1,1), e um **canal** pode ser utilizado em **vários atendimentos** (1,n).
+- **PESSOA FÍSICA** e **PESSOA JURÍDICA** são especializações (subtipos) da entidade genérica **CLIENTE**.
+
+---
+
+*Observação: o arquivo original `.brM3` é um arquivo de serialização Java específico do software brModelo e não pôde ser convertido/lido diretamente como texto estruturado; este documento foi elaborado com base na leitura visual completa do diagrama fornecido (imagem anexada), preservando entidades, atributos, identificadores e cardinalidades.*
 CLIENTE faz PROPOSTA
 Um Cliente pode fazer várias Propostas (1:N).
 Uma Proposta pertence a apenas um Cliente (1:1).
