@@ -1,3 +1,13 @@
+## iNTEGRANTES
+
+* César Augusto Mechi Zanin - 47305177
+* luiz felipe da silva almeida - 04907315
+* Isabely Toledo dos Santos - 46852760
+* Vinicius dos Santos Maia - 47416301
+* Wendel Andrioli de Melo - 1747411724
+
+
+
 ## M.R.D Saúde Corretora de Seguros Ltda.
 Modelo Entidade-Relacionamento (MER) e Dicionário de Dados
 
