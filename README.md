@@ -1,21 +1,20 @@
 Caso: Dicionário de Dados da MRD Saúde Corretora de Seguros Ltda.
 
 1. Modelo conceitual
-Este modelo representa uma corretora de seguros (MRD Saúde Corretora de Seguros Ltda.) em que cada cliente, pessoa física ou jurídica, contrata uma ou mais apólices/propostas por meio de um colaborador (corretor). Cada apólice reúne um ou mais produtos de seguro, vinculados aos ramos de seguro oferecidos, e pode, ao longo da vigência, originar um ou mais sinistros, atendidos por um prestador de serviço credenciado.
+Este modelo representa uma corretora de seguros (MRD Saúde Corretora de Seguros Ltda.) em que cada cliente, pessoa física ou jurídica, contrata uma ou mais apólices/propostas por meio de um colaborador (corretor). Cada apólice reúne um ou mais produtos de seguro, vinculados aos ramos de seguro oferecidos, e pode, ao longo da vigência, originar um ou mais sinistros, atendidos por um colaborador
 
 Entidade	Relaciona-se com	Cardinalidade
-CLIENTES_PF / CLIENTES_PJ	APOLICES_PROPOSTAS	1:N — um cliente pode contratar várias apólices/propostas; uma apólice/proposta pertence a um único cliente
+CLIENTES / APOLICES_PROPOSTAS	1:N — um cliente pode contratar várias apólices/propostas; uma apólice/proposta pertence a um único cliente
 COLABORADORES	APOLICES_PROPOSTAS	1:N — um colaborador (corretor) pode atender várias apólices/propostas; uma apólice/proposta foi atendida por apenas um colaborador
 APOLICES_PROPOSTAS	PRODUTOS_SEGURO	N:N, resolvido pelo grupo repetitivo ITEM_COBERTURA — uma apólice pode reunir vários produtos/coberturas; um produto pode estar presente em várias apólices
 RAMOS_SEGURO	PRODUTOS_SEGURO	1:N — um ramo de seguro possui vários produtos; um produto pertence a um único ramo
 APOLICES_PROPOSTAS	SINISTROS	1:N — uma polícia pode gerar vários sinistros ao longo da vigência; um sinistro está vinculado a uma única polícia
-PRESTADORES_SERVICO	SINISTROS	1:N — um prestador credenciado pode atender vários sinistros; um sinistro é atendido por um único prestador
 APOLICES_PROPOSTAS é uma entidade associativa entre CLIENTE, COLABORADOR e PRODUTO_SEGURO (um colaborador atende várias apólices, um cliente contrata várias apólices ao longo do tempo, e cada apólice pode reunir uma ou mais coberturas contratadas por meio do grupo repetitivo ITEM_COBERTURA).
 
-Cliente que contrata um ou mais seguros junto à corretora. Colaborador é o funcionário da corretora responsável pela venda e pelo acompanhamento das propostas e apólices, incluindo corretores internos e parceiros freelance com registro na SUSEP. Ramo de Seguro é uma categoria geral de cobertura oferecida pela corretora (ex.: Saúde, Vida, Automóvel, Residencial). Produto de Seguro é o plano ou pacote específico de cobertura, vinculado a um único ramo de seguro. Apólice/Proposta é o contrato de seguro firmado entre o cliente e a corretora, podendo reunir uma ou mais coberturas contratadas. Prestador de Serviço é uma empresa da rede credenciada (oficina mecânica, hospital, clínica ou assistência 24h) que atende o cliente em caso de sinistro. Sinistro é o evento de acionamento de seguro (colisão, sinistro residencial, pedido de reembolso de saúde etc.) que gera análise e, quando procedente, indenização ao cliente.
+Cliente que contrata um ou mais seguros junto à corretora. Colaborador é o funcionário da corretora responsável pela venda e pelo acompanhamento das propostas e apólices, incluindo corretores internos e parceiros freelance com registro na SUSEP. Ramo de Seguro é uma categoria geral de cobertura oferecida pela corretora (ex.: Saúde, Vida, Automóvel, Residencial). Produto de Seguro é o plano ou pacote específico de cobertura, vinculado a um único ramo de seguro. Apólice/Proposta é o contrato de seguro firmado entre o cliente e a corretora, podendo reunir uma ou mais coberturas contratadas.
 
 2. Fluxo de dados (visão de DFD)
-O Cliente procura a corretora ou é abordado por um Colaborador → cadastro ou atualização em CLIENTES, com validação de unicidade por CPF ou CNPJ → o Colaborador monta a proposta, selecionando um ou mais PRODUTOS_SEGURO vinculados aos RAMOS_SEGURO contratados → o sistema registra o contrato em APOLICES_PROPOSTAS, junto com os itens de cobertura escolhidos (ITEM_COBERTURA) → durante a vigilância da apólice, a ocorrência de um evento coberto gera um registro no SINISTROS, vinculando a apólice ao PRESTADOR_SERVICO responsável pelo atendimento (oficina, hospital ou assistência) → toda leitura ou escrita nessas tabelas é registrada pelo log de acesso do SGBD (§5), o que sustenta auditorias e conformidade com a LGPD (§6).
+O Cliente procura a corretora ou é abordado por um Colaborador → cadastro ou atualização em CLIENTES, com validação de unicidade por CPF ou CNPJ → o Colaborador monta a proposta, selecionando um ou mais PRODUTOS_SEGURO vinculados aos RAMOS_SEGURO contratados → o sistema registra o contrato em APOLICES_PROPOSTAS, junto com os itens de cobertura escolhidos (ITEM_COBERTURA) → durante a vigilância da apólice, a ocorrência de um evento coberto gera um registro no SINISTROS, vinculando a apólice ao COLABORADOR responsável pelo atendimento (oficina, hospital ou assistência) → toda leitura ou escrita nessas tabelas é registrada pelo log de acesso do SGBD (§5), o que sustenta auditorias e conformidade com a LGPD (§6).
 
 3. Convenções do dicionário
 SGBD: MySQL 8, mecanismo de armazenamento InnoDB — cuida da persistência dos arquivos de dados, do log de transações (refazer/desfazer) e mantém o índice primário clusterizado por chave.
@@ -120,33 +119,18 @@ ID_PRODUTO (por item)	inteiro	Sim	Produto/cobertura contratado dentro da políci
 QT_VALOR_COBERTURA (por item)	decimal(10,2)	Sim	Valor de prêmio correspondente ao item de cobertura dentro da polícia.
 Índices: PK ID_APOLICE; índice único em ID_NUMERO_APOLICE; índice em ID_CLIENTE (listar apólices do cliente); índice em ID_COLABORADOR (relatório de comissão); índice em DT_FIM_VIGENCIA (fila de renovação).
 
-PRESTADORES
-PRESTADORES = @ID_PRESTADOR + NM_RAZAO_SOCIAL + ID_CNPJ + ID_IE + TP_ESPECIALIDADE + DS_EMAIL + DS_ENDERECO + DS_TELEFONE
-
-Leitura: entidade cadastral da rede credenciada (oficinas, hospitais/clínicas e assistências 24h); todos os campos são obrigatórios e conectados por +, sem qualquer complemento, pois o credenciamento exige cadastro completo antes do vínculo com um sinistro.
-
-Atribuição	Tipo físico	Obrigatório	bloco e
-ID_PRESTADOR	inteiro	Sim (PK)	Identificador do prestador credenciado.
-NM_RAZAO_SOCIAL	varchar(150)	Sim	Razão social do prestador (oficina, hospital, clínica ou assistência).
-ID_CNPJ	char(14)	Sim (único)	Documento de identificação da pessoa jurídica prestada.
-TP_ESPECIALIDADE	varchar(60)	Sim	Categoriza o tipo de credenciamento (Oficina Credenciada Auto, Rede Hospitalar Saúde, Assistência 24h Residencial).
-DS_EMAIL	varchar(120)	Sim	Canal de contato eletrônico para acionamento.
-DS_ENDERECO	varchar(200)	Sim	Endereço de atendimento do prestador.
-DS_TELEFONE	varchar(20)	Sim	Canal de contato telefônico para acionamento em emergência.
-Índices: PK ID_PRESTADOR; índice único em ID_CNPJ; índice em TP_ESPECIALIDADE (roteirização do sinistro para o prestador correto).
-
 SINISTROS
-SINISTROS = @ID_SINISTRO + ID_NUMERO_SINISTRO + DT_OCORRENCIA + DT_REGISTRO + ID_APOLICE + ID_PRESTADOR + QT_VALOR_INDENIZACAO + TP_STATUS_SINISTRO
+SINISTROS = @ID_SINISTRO + ID_NUMERO_SINISTRO + DT_OCORRENCIA + DT_REGISTRO + ID_APOLICE + ID_COLABORADOR + QT_VALOR_INDENIZACAO + TP_STATUS_SINISTRO
 
-Leitura: ID_APOLICE liga o sinistro à polícia acionada, sem detalhar essa entidade associativa novamente; ID_PRESTADOR é obrigatório e identifica o responsável pelo atendimento (oficina, clínica ou assistência); não há campos indicados porque todo sinistro registrado já nasceu com prestador designado e valor estimado.
+Leitura: ID_APOLICE liga o sinistro à polícia acionada, sem detalhar essa entidade associativa novamente; ID_COLABORADOR é obrigatório e identifica o responsável pelo atendimento (oficina, clínica ou assistência); não há campos indicados porque todo sinistro registrado já nasceu com colaborador designado.
 
 Atribuição	Tipo físico	Obrigatório	bloco e
 ID_SINISTRO	inteiro	Sim (PK)	Identificador interno do sinistro.
-ID_NUMERO_SINISTRO	varchar(30)	Sim (único)	Número oficial do sinistro, usado na comunicação com o cliente e o prestador.
+ID_NUMERO_SINISTRO	varchar(30)	Sim (único)	Número oficial do sinistro, usado na comunicação com o cliente e o colaborador.
 DT_OCORRENCIA	data	Sim	Dados em que o evento coberto ocorreu; base para cálculo de SLA.
 DT_REGISTRO	data	Sim	Dados em que o sinistro foi registrado no sistema.
 ID_APOLÍCE	inteiro	Sim (FK)	Referência à polícia acionada (entidade associativa, não especificada aqui).
-ID_PRESTADOR	inteiro	Sim (FK)	Prestador ou oficina/clínica cobrada do atendimento.
+ID_COLABORADOR	inteiro	Sim (FK)	Colaborador ou oficina/clínica cobrada do atendimento.
 QT_VALOR_INDENIZAÇÃO	decimal(10,2)	Sim	Custo financeiro do sinistro ou reembolso pago.
 TP_STATUS_SINISTRO	varchar(30)	Sim	Situação do sinistro (Aberto, Em Análise, Regulado, Pago, Encerrado).
 Índices: PK ID_SINISTRO; índice único em ID_NUMERO_SINISTRO; índice em ID_APOLICE (histórico de sinistros da polícia); índice em DT_OCORRENCIA (relatórios de SLA por período).
