@@ -1,3 +1,12 @@
+* César Augusto Mechi Zanin - 47305177
+* luiz felipe da silva almeida - 04907315
+* Isabely Toledo dos Santos - 46852760
+* Vinicius dos Santos Maia - 47416301
+* Wendel Andrioli de Melo - 1747411724
+* Júlio César Pereira da Silva - 48359904
+* Luana Silva Rocha dos Santos - 48828297
+
+
 Caso: Dicionário de Dados da MRD Saúde Corretora de Seguros Ltda.
 
 1. Modelo conceitual
