@@ -1,4 +1,4 @@
-* César Augusto Mechi Zanin - 47305177
+* César Augusto Mechi Zanin - 47305177 - @CesarZanin-TI
 * luiz felipe da silva almeida - 04907315
 * Isabely Toledo dos Santos - 46852760
 * Vinicius dos Santos Maia - 47416301
