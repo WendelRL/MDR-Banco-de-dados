@@ -31,7 +31,7 @@ Cliente que contrata um ou mais seguros junto à corretora. Colaborador é o fun
 O Cliente procura a corretora ou é abordado por um Colaborador → cadastro ou atualização em CLIENTES, com validação de unicidade por CPF ou CNPJ → o Colaborador monta a proposta, selecionando um ou mais PRODUTOS_SEGURO vinculados aos RAMOS_SEGURO contratados → o sistema registra o contrato em APOLICES_PROPOSTAS, junto com os itens de cobertura escolhidos (ITEM_COBERTURA) → durante a vigilância da apólice, a ocorrência de um evento coberto gera um registro no SINISTROS, vinculando a apólice ao COLABORADOR responsável pelo atendimento (oficina, hospital ou assistência) → toda leitura ou escrita nessas tabelas é registrada pelo log de acesso do SGBD (§5), o que sustenta auditorias e conformidade com a LGPD (§6).
 
 3. Convenções do dicionário
-SGBD: MySQL 8, mecanismo de armazenamento InnoDB — cuida da persistência dos arquivos de dados, do log de transações (refazer/desfazer) e mantém o índice primário clusterizado por chave.
+SGBD: PostgreSQL, mecanismo de armazenamento Heap Files combinados com o modelo MVCC (Multi-Version Concurrency Control — cuida da persistência dos arquivos de dados, do log de transações (refazer/desfazer) e mantém o índice primário clusterizado por chave.
 
 Codificação de caracteres: utf8mb4 com agrupamento utf8mb4_0900_ai_ci. Escolhida em vez de latin1 por cobrir acentuação do português sem perda em campos de nome, endereço e texto livre, e por ser compatível com qualquer caractere Unicode que aborde em observações de sinistro ou política de produto.
 
