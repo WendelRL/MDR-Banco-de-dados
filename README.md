@@ -14,10 +14,15 @@ Este modelo representa uma corretora de seguros (MRD Saúde Corretora de Seguros
 
 Entidade	Relaciona-se com	Cardinalidade
 CLIENTES / APOLICES_PROPOSTAS	1:N — um cliente pode contratar várias apólices/propostas; uma apólice/proposta pertence a um único cliente
+
 COLABORADORES	APOLICES_PROPOSTAS	1:N — um colaborador (corretor) pode atender várias apólices/propostas; uma apólice/proposta foi atendida por apenas um colaborador
+
 APOLICES_PROPOSTAS	PRODUTOS_SEGURO	N:N, resolvido pelo grupo repetitivo ITEM_COBERTURA — uma apólice pode reunir vários produtos/coberturas; um produto pode estar presente em várias apólices
+
 RAMOS_SEGURO	PRODUTOS_SEGURO	1:N — um ramo de seguro possui vários produtos; um produto pertence a um único ramo
+
 APOLICES_PROPOSTAS	SINISTROS	1:N — uma polícia pode gerar vários sinistros ao longo da vigência; um sinistro está vinculado a uma única polícia
+
 APOLICES_PROPOSTAS é uma entidade associativa entre CLIENTE, COLABORADOR e PRODUTO_SEGURO (um colaborador atende várias apólices, um cliente contrata várias apólices ao longo do tempo, e cada apólice pode reunir uma ou mais coberturas contratadas por meio do grupo repetitivo ITEM_COBERTURA).
 
 Cliente que contrata um ou mais seguros junto à corretora. Colaborador é o funcionário da corretora responsável pela venda e pelo acompanhamento das propostas e apólices, incluindo corretores internos e parceiros freelance com registro na SUSEP. Ramo de Seguro é uma categoria geral de cobertura oferecida pela corretora (ex.: Saúde, Vida, Automóvel, Residencial). Produto de Seguro é o plano ou pacote específico de cobertura, vinculado a um único ramo de seguro. Apólice/Proposta é o contrato de seguro firmado entre o cliente e a corretora, podendo reunir uma ou mais coberturas contratadas.
