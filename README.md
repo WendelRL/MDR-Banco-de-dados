@@ -2,8 +2,8 @@
 * Luiz Felipe da Silva Almeida - 04907315
 * Isabely Toledo dos Santos - 46852760
 * Vinicius dos Santos Maia - 47416301
-* Wendel Andrioli de Melo - 1747411724
-* Júlio César Pereira da Silva - 48359904
+* Wendel Andrioli de Melo - 47411724
+* Júlio César Pereira da Silva - 48359904 - @Juliotdpenna
 * Luana Silva Rocha dos Santos - 48828297
 
 
