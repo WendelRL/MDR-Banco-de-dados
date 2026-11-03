@@ -13,7 +13,7 @@ Caso: Dicionário de Dados da MRD Saúde Corretora de Seguros Ltda.
 Este modelo representa uma corretora de seguros (MRD Saúde Corretora de Seguros Ltda.) em que cada cliente, pessoa física ou jurídica, contrata uma ou mais apólices/propostas por meio de um colaborador (corretor). Cada apólice reúne um ou mais produtos de seguro, vinculados aos ramos de seguro oferecidos, e pode, ao longo da vigência, originar um ou mais sinistros, atendidos por um colaborador
 
 Entidade	Relaciona-se com	Cardinalidade
-CLIENTES / APOLICES_PROPOSTAS	1:N — um cliente pode contratar várias apólices/propostas; uma apólice/proposta pertence a um único cliente
+CLIENTES / APOLICES_PROPOSTAS	1:N — *um cliente pode contratar várias apólices/propostas; uma apólice/proposta pertence a um único cliente*
 COLABORADORES	APOLICES_PROPOSTAS	1:N — um colaborador (corretor) pode atender várias apólices/propostas; uma apólice/proposta foi atendida por apenas um colaborador
 APOLICES_PROPOSTAS	PRODUTOS_SEGURO	N:N, resolvido pelo grupo repetitivo ITEM_COBERTURA — uma apólice pode reunir vários produtos/coberturas; um produto pode estar presente em várias apólices
 RAMOS_SEGURO	PRODUTOS_SEGURO	1:N — um ramo de seguro possui vários produtos; um produto pertence a um único ramo
