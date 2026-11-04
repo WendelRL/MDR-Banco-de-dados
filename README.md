@@ -1,6 +1,6 @@
 * César Augusto Mechi Zanin - 47305177 - @CesarZanin-TI
-* Luiz Felipe da Silva Almeida - 04907315
-* Isabely Toledo dos Santos - 46852760 - @Issbelytoledodossantos-prog
+* Luiz Felipe da Silva Almeida - 04907315 
+* Isabely Toledo dos Santos - 46852760 - @isabelytoledodossantos-prog
 * Vinicius dos Santos Maia - 47416301 - @VINICIUS-MAIA2003
 * Wendel Andrioli de Melo - 47411724 - @WendelRL
 * Júlio César Pereira da Silva - 48359904 - @Juliotdpenna
