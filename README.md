@@ -114,7 +114,7 @@ ID_RAMO	inteiro	Sim (FK)	Referência ao ramo de seguro ao qual o produto pertenc
 APOLICES_PROPOSTAS
 APOLICES_PROPOSTAS = @ID_APOLICE + ID_NUMERO_APOLICE + DT_EMISSAO + DT_INICIO_VIGENCIA + DT_FIM_VIGENCIA + QT_PREMIO_TOTAL + QT_DESCONTO_APLICADO + IN_APROVACAO_GERENCIAL + [TP_BOLETO | TP_CARTAO_CORPORATIVO | TP_DEBITO_CONTA] + TP_STATUS_APOLICE + ID_CLIENTE + ID_COLABORADOR + 1{/ITEM_COBERTURA/ = ID_PRODUTO + QT_VALOR_COBERTURA}10
 
-Leitura: ID_NUMERO_APOLICE usa o prefixo de identificador por ser um número oficial de registro externo da apólice, não um código interno de domínio; [TP_BOLETO | TP_CARTAO_CORPORATIVO | TP_DEBITO_CONTA] exige escolher exatamente uma forma de pagamento; 1{ /ITEM_COBERTURA/ }10 é uma iteração que permite de uma a dez coberturas/produtos por polícia, cada uma com seu próprio grupo de campos rotulados por / /; ID_CLIENTE e ID_COLABORADOR ligam a apólice ao cliente e ao colaborador responsável, sem detalhar essas entidades associativas novamente aqui.
+Leitura: ID_NUMERO_APOLICE usa o prefixo de identificador por ser um número oficial de registro externo da apólice, não um código interno de domínio; [TP_BOLETO | TP_CARTAO_CORPORATIVO | TP_DEBITO_CONTA] exige escolher exatamente uma forma de pagamento; 1{ /ITEM_COBERTURA/ }10 é uma iteração que permite de uma a dez coberturas/produtos por apolice, cada uma com seu próprio grupo de campos rotulados por / /; ID_CLIENTE e ID_COLABORADOR ligam a apólice ao cliente e ao colaborador responsável, sem detalhar essas entidades associativas novamente aqui.
 
 Atribuição	Tipo físico	Obrigatório	bloco e
 ID_APOLÍCE	inteiro	Sim (PK)	Identificador interno da apolice/proposta.
