@@ -162,7 +162,7 @@ CLIENTES_PF carrega dado sensível de saúde (LGPD art. 5º, II) quando o client
 
 7. DIAGRAMA DE ENTIDADE-RELACIONAMENTO
   
-![DIAGRAMA - DER](levantamento/Model_-_Diagrama_-_MRD_Saude - atualizado-1.png)
+[![Minha Imagem](levantamento/Modelo_-_Diagrama_-_MRD_Saude - atualizado-1.png)](levantamento/Modelo_-_Diagrama_-_MRD_Saude - atualizado-1.png)
 
 
 Restrições de negócios
