@@ -1,3 +1,4 @@
+<img width="2490" height="961" alt="Modelo_-_Diagrama_-_MRD_Saude - atualizado-1" src="https://github.com/user-attachments/assets/9cfab983-21aa-4c46-8ded-33b0c9d860d2" />
 * César Augusto Mechi Zanin - 47305177 - @CesarZanin-TI
 * Luiz Felipe da Silva Almeida - 04907315 @Luiz55555
 * Isabely Toledo dos Santos - 46852760 - @isabelytoledodossantos-prog
@@ -162,4 +163,5 @@ SINISTROS	Central de Sinistros, Financeiro, Auditoria	Central de Sinistros	Centr
 CLIENTES_PF carrega dado sensível de saúde (LGPD art. 5º, II) quando o cliente contrata Seguro Saúde, na razão da Declaração de Saúde e dos dados socioeconômicos exigidos na subscrição de risco. O tratamento é amparado na celebração do contrato de prestação de serviço; o acesso é restrito aos papéis envolvidos na venda e no atendimento mais a auditorias, e toda consulta fica registrada no log de acesso (§5), o que sustenta o princípio de responsabilização (art. 6º, X). A retenção segue o prazo legal aplicável aos contratos de seguro; encerrado o prazo, os dados são anonimizados — nunca apagados fisicamente — preservando estatística sem identificar o cliente. CLIENTES_PJ, COLABORADORES, PRESTADORES_SERVICO, RAMOS_SEGURO, PRODUTOS_SEGURO, APOLICES_PROPOSTAS e SINISTROS são dados cadastrais e contratuais comuns (não sensíveis), sujeitos às mesmas regras gerais de acesso e log.
 
 7. DIAGRAMA DE ENTIDADE-RELACIONAMENTO
-![Diagrama MRD - Seguro Saúde](docs/Modelo_-_Diagrama_-_MRD_Saude_-_atualizado-1.png)
+<img width="2490" height="961" alt="Modelo_-_Diagrama_-_MRD_Saude - atualizado-1" src="https://github.com/user-attachments/assets/6f6c2540-8705-4219-b27d-4ae4f85fe48b" />
+
