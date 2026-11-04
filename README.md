@@ -161,6 +161,42 @@ SINISTROS	Central de Sinistros, Financeiro, Auditoria	Central de Sinistros	Centr
 CLIENTES_PF carrega dado sensível de saúde (LGPD art. 5º, II) quando o cliente contrata Seguro Saúde, na razão da Declaração de Saúde e dos dados socioeconômicos exigidos na subscrição de risco. O tratamento é amparado na celebração do contrato de prestação de serviço; o acesso é restrito aos papéis envolvidos na venda e no atendimento mais a auditorias, e toda consulta fica registrada no log de acesso (§5), o que sustenta o princípio de responsabilização (art. 6º, X). A retenção segue o prazo legal aplicável aos contratos de seguro; encerrado o prazo, os dados são anonimizados — nunca apagados fisicamente — preservando estatística sem identificar o cliente. CLIENTES_PJ, COLABORADORES, PRESTADORES_SERVICO, RAMOS_SEGURO, PRODUTOS_SEGURO, APOLICES_PROPOSTAS e SINISTROS são dados cadastrais e contratuais comuns (não sensíveis), sujeitos às mesmas regras gerais de acesso e log.
 
 7. DIAGRAMA DE ENTIDADE-RELACIONAMENTO
+   ![DIAGRAMA - DER](levantamento/Model_-_Diagrama_-_MRD_Saude - atualizado-1.png)
 
 
+Restrições de negócios
+| RN01 | Todo cliente tem CPF/CNPJ válido e único | cpf_cnpj UNIQUE NOT NULL; tipo_pessoa CHECK IN ('F','J') |
+| RN02 | Cliente tem nome/razão social e ao menos um contato | nome_razao_social NOT NULL; consulta de auditoria verifica contato |
+| RN03 | Corretor tem CPF e e-mail únicos | cpf e email UNIQUE NOT NULL |
+| RN04 | Todo corretor atende ao menos um cliente e todo cliente tem ao menos um corretor (1,n – 1,n) | Tabela CORRETOR_CLIENTE; mínimo 1 verificado por auditoria |
+| RN05 | Toda apólice tem um produto e um número único | id_produto NOT NULL; numero_apolice UNIQUE NOT NULL |
+| RN06 | O vencimento é posterior à emissão | CHECK (data_vencimento > data_emissao) |
+| RN07 | O prêmio é maior que zero | CHECK (valor_premio > 0) |
+| RN08 | Status da apólice dentro de valores válidos; apólice não é apagada, só muda de status | CHECK (status IN ('Ativa','Vencida','Cancelada','Suspensa')); FK com RESTRICT |
+| RN09 | Forma de pagamento padronizada | CHECK (forma_pagamento IN ('Boleto','Cartão','Débito','PIX')) |
+| RN10 | Toda apólice tem ao menos um cliente titular | Tabela CLIENTE_APOLICE; mínimo 1 por auditoria |
+| RN11 | Sinistro pertence a uma apólice e ocorre dentro da vigência | id_apolice NOT NULL; vigência verificada por auditoria |
+| RN12 | Indenização não pode ser negativa nem superar o valor segurado | CHECK (valor_indenizacao >= 0); teto por auditoria |
+| RN13 | Todo sinistro gera ao menos um atendimento | Tabela SINISTRO_ATENDIMENTO; mínimo por auditoria |
+| RN14 | Canal e status de atendimento dentro de valores válidos | CHECK em tipo_canal e status |
+| RN15 | Score de crédito entre 0 e 1000; limite não negativo | CHECK (score BETWEEN 0 AND 1000); CHECK (limite_credito >= 0) |
+| RN16 | Salário do corretor não pode ser negativo; datas de nascimento coerentes | CHECK (salario >= 0); auditoria de idade mínima (18 anos) |
+| RN17 | Avaliação de risco é solicitada por gerente e realizada por administrador | Tabelas SOLICITACAO e REALIZA_AVALIACAO |
+
+Rastreabilidade
+| P1 — Falta de visão de renovações (apólices vencendo) | APOLICE, CLIENTE_APOLICE, CLIENTE |
+| P2 — Sinistros sem controle de status e valor indenizado | SINISTRO, APOLICE, PRODUTO |
+| P3 — Atendimentos sem acompanhamento de SLA | ATENDIMENTO, SINISTRO_ATENDIMENTO, SINISTRO |
+| P4 — Avaliação de risco e crédito sem histórico centralizado | AVALIACAO_RISCO, CREDITO, RESTRICAO_CREDITO |
+| P5 — Carteira por corretor não consolidada | CORRETOR, CORRETOR_CLIENTE, CLIENTE_APOLICE, APOLICE |
+| K1 — Prêmio emitido | APOLICE |
+| K2 — Apólices a vencer | APOLICE, CLIENTE_APOLICE, CLIENTE |
+| K3 — Carteira por corretor | CORRETOR, CORRETOR_CLIENTE, CLIENTE_APOLICE, APOLICE |
+| K4 — Sinistralidade por produto | SINISTRO, APOLICE, PRODUTO |
+| K5 — Taxa de cancelamento | APOLICE |
+| K6 — Sinistros por status | SINISTRO |
+| K7 — Atendimentos fora do SLA | ATENDIMENTO, SINISTRO_ATENDIMENTO |
+| K8 — Atendimentos por canal | ATENDIMENTO |
+| K9 — Produtos por cliente | CLIENTE, CLIENTE_APOLICE, APOLICE, PRODUTO |
+| K10 — Score médio e resultados de risco | AVALIACAO_RISCO, CREDITO |
 
