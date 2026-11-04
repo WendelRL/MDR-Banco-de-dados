@@ -1,7 +1,7 @@
 **LEVANTAMENTO DA ENTREVISTA** 
 
 
-- *Quem:* Márcio Roberto Diniz, sócio da empresa, sua função também é cuidar da parte financeira da empresa. Vinicius, é o integrante do grupo que participou e realizou a entrevista.
+- **Quem:** Márcio Roberto Diniz, sócio da empresa, sua função também é cuidar da parte financeira da empresa. Vinicius, é o integrante do grupo que participou e realizou a entrevista.
 
 - **Quando e onde:** A entrevista foi realizada no dia 11/09 (sexta-feira), na sala do sócio e própria mesa dele, dentro da empresa. Com tudo organizado e mantendo uma entrevista 100% presencial. Uma venda é anotada através do envio correto e completo de documentos do corretor para o setor administrativo que fica responsável de cadastrar a proposta ou apólice no sistema, assim que esses documentos são enviados, o setor administrativo se ocupa com uma planilha de próprio EXCEL da conta GOOGLE da empresa, nomeada como “TAREFAS ADM”, alinhando e organizando as vendas, por nome do corretor, tipo de produto, data e nome do cliente/empresa, mantendo o controle da produção diária, semanal e mensal. Após a emissão e sucesso da apólice do cliente, o setor se aparenta com outro sistema, chamado SIAV (https://tecsell2.nossocloud.com.br/), esse sistema é usado para cadastrar a venda, assim que finalizada e emitida com sucesso, lançar comissões dos colaboradores, consultar clientes e produção.
 
