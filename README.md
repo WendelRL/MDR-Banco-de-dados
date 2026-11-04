@@ -1,5 +1,5 @@
 * César Augusto Mechi Zanin - 47305177 - @CesarZanin-TI
-* Luiz Felipe da Silva Almeida - 04907315 @Luiz55555
+* Luiz Felipe da Silva Almeida - 04907315 - @Luiz55555
 * Isabely Toledo dos Santos - 46852760 - @isabelytoledodossantos-prog
 * Vinicius dos Santos Maia - 47416301 - @VINICIUS-MAIA2003
 * Wendel Andrioli de Melo - 47411724 - @WendelRL
@@ -10,10 +10,10 @@
 Caso: Dicionário de Dados da MRD Saúde Corretora de Seguros Ltda.
 
 1. Modelo conceitual
-Este modelo representa uma corretora de seguros (MRD Saúde Corretora de Seguros Ltda.) em que cada cliente, pessoa física ou jurídica, contrata uma ou mais apólices/propostas por meio de um colaborador (corretor). Cada apólice reúne um ou mais produtos de seguro, vinculados aos ramos de seguro oferecidos, e pode, ao longo da vigência, originar um ou mais sinistros, atendidos por um colaborador
+Este modelo representa uma corretora de seguros (MRD Saúde Corretora de Seguros Ltda.) em que cada cliente, pessoa física ou jurídica, contrata uma ou mais apólices/propostas por meio de um colaborador (corretor). Cada apólice reúne um ou mais produtos de seguro, vinculados aos ramos de seguro oferecidos, e pode, ao longo da vigência, originar um ou mais sinistros, atendidos por um prestador de serviço
 
 Entidade	Relaciona-se com	Cardinalidade
-CLIENTES / APOLICES_PROPOSTAS	1:N — um cliente pode contratar várias apólices/propostas; uma apólice/proposta pertence a um único cliente
+CLIENTES / APÓLICES_PROPOSTAS	1:N — um cliente pode contratar várias apólices/propostas; uma apólice/proposta pertence a um único cliente
 
 COLABORADORES	APOLICES_PROPOSTAS	1:N — um colaborador (corretor) pode atender várias apólices/propostas; uma apólice/proposta foi atendida por apenas um colaborador
 
@@ -68,10 +68,9 @@ QT_COMISSÃO_PERCENTUAL	decimal(5,2)	Sim	Percentual de comissão aplicada sobre 
 ID_SUSEP	varchar(20)	Não	Registro profissional na SUSEP, exigido por regulação do setor para corretores parceiros ou internos habilitados à venda.
 Índices: PK ID_COLABORADOR (clusterizado); índice único em ID_CPF; índice secundário em NM_COLABORADOR (busca por nome nos relatórios de comissão).
 
-CLIENTES (Segurados — Pessoa Física ou Pessoa jurídica)
-CLIENTES = @ID_CLIENTE + NM_CLIENTE + ID_CPF + ID_RG + DT_NASCIMENTO + DS_ENDERECO + DS_EMAIL + DS_TELEFONE + QT_LIMITE_CREDITO + IN_CADASTRO_ATIVO
+CLIENTES = @ID_CLIENTE + TP_PESSOA + NM_CLIENTE + ID_CPF_CNPJ + DS_ENDERECO + DS_EMAIL + DS_TELEFONE + QT_LIMITE_CREDITO + IN_CADASTRO_ATIVO + (ID_RG) + (DT_NASCIMENTO) + (NM_FANTASIA) + (CD_CNAE)
 
-Leitura: ID_CLIENTES obrigatório e único garante a unicidade cadastral Ordinariamente na regra de negócio; os demais campos são obrigatórios e conectados por +; não há campos adicionais nesta entidade porque o cadastro completo é condição para emissão de apólice.
+ID_CLIENTES obrigatório e único garante a unicidade cadastral Ordinariamente na regra de negócio; os demais campos são obrigatórios e conectados por +; não há campos adicionais nesta entidade porque o cadastro completo é condição para emissão de apólice.
 
 Atribuição	Tipo físico	Obrigatório	bloco e
 ID_CLIENTE	inteiro	Sim (PK)	Identificador único do cliente, centralizado para a visão 360° de todas as apólices ativas (saúde, residencial, automóvel).
