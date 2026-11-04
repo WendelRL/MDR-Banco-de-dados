@@ -60,7 +60,7 @@ Atribuição	Tipo físico	Obrigatório	bloco e
 ID_COLABORADOR	inteiro	Sim (PK)	Código de localização do registro; não sofre operação matemática.
 NM_COLABORADOR	varchar(120)	Sim	Nome completo do colaborador; identifica o responsável pela venda no contrato e nos relatórios de comissão.
 ID_CPF	caractere(11)	Sim (único)	Documento de identificação civil; usado para validação cadastral e emissão de recibo de comissão.
-DT_NASCIMENTO	data	Sim	Dados de nascimento, usados ​​para cálculo de tempo de casa e elegibilidade a benefícios internos.
+DT_NASCIMENTO	data	Sim	Data de nascimento, usados ​​para cálculo de tempo de casa e elegibilidade a benefícios internos.
 DS_ENDERECO	varchar(200)	Sim	Endereço residencial de contato administrativo.
 DS_EMAIL	varchar(120)	Sim	Canal de contato eletrônico e de acesso ao sistema.
 DS_TELEFONE	varchar(20)	Sim	Canal de contato telefônico.
