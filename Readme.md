@@ -112,7 +112,7 @@ Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, 
 - A reserva de estoque é válida por um tempo limite (ex.: 15 a 30 minutos) durante o checkout; se o pagamento não for confirmado, o item retorna ao estoque geral.  
 - **Pagamentos e Recebimento:**  
 - A liberação para entrega ou prestação do serviço depende da confirmação prévia do meio de pagamento (cartão, Pix, boleto compensado).
--  
+  
 - **Restrições Legais, Regulatórias e Organizacionais**  
 - Regras impostas por legislação externa ou por diretrizes de governança e controle interno.  
 - **Proteção de Dados Pessoais (LGPD):**  
