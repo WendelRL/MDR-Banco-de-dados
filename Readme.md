@@ -40,7 +40,7 @@ Também foram abordados o repasse de comissões entre seguradora, empresa e cola
 Regras principais: Os colaboradores devem ser fiéis aos clientes, respeitar as datas de pagamento das comissões e nunca antecipar repasses. Nenhum cliente deve ficar sem atendimento, mesmo quando seu corretor responsável estiver ausente, desde que o atendimento seja posteriormente comunicado a ele. O setor administrativo deve manter o sigilo dos dados dos clientes.  
 Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, apresentando uma tendência de queda no final do ano, quando clientes e empresas priorizam outros gastos.
 
-**Levantamento da Entrevista:** [Foto Entrevista](levantamento/Foto_entrevista.jpg)
+**Levantamento da Entrevista:** [Levantamento](levantamento/levantamento.md)
 
 **Nível de detalhe — processos, requisitos e regras de negócio (todos os grupos)**
 
