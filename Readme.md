@@ -222,14 +222,38 @@ SINISTROS   ID_COLABORADOR   COLABORADORES   ID_COLABORADOR   ATENDE_SINISTRO
 
 ### 1.5 Justificativas Técnicas das Decisões
 
-*(vale 7,5%)*
+Chaves primárias
+- **`ID_*` (cliente, colaborador, ramo, produto, apólice, sinistro):** identificadores internos, estáveis e sem significado de negócio. São mais seguros que CPF/CNPJ ou número da apólice, que podem ser corrigidos ou mudar de formato.
+- **`ITEM_COBERTURA` (`ID_APOLICE` + `ID_PRODUTO`):** a chave composta identifica cada linha e impede repetir o mesmo produto na mesma apólice.
 
-- Justificar as **chaves primárias** escolhidas.  
-- Justificar as **chaves estrangeiras** e os relacionamentos que elas implementam.  
-- Justificar as **restrições** aplicadas (unicidade, obrigatoriedade, valores permitidos etc.), citando o código da regra de negócio (`RNxx`) que cada restrição implementa, quando houver.  
-- Justificar **decisões arquiteturais** gerais do modelo.  
+Chaves estrangeiras e relacionamentos
+A FK fica sempre no lado "(1,1)", na tabela que depende da outra.
+
+| FK | Regra que implementa |
+|---|---|
+| `APOLICES_PROPOSTAS.ID_CLIENTE` | Toda apólice pertence a um cliente (CONTRATA) |
+| `APOLICES_PROPOSTAS.ID_COLABORADOR` | Toda apólice é atendida por um colaborador (ATENDE_APOLICE) |
+| `SINISTROS.ID_APOLICE` | Todo sinistro nasce de uma apólice (GERA) |
+| `SINISTROS.ID_COLABORADOR` | Todo sinistro é atendido por um colaborador (ATENDE_SINISTRO) |
+| `PRODUTOS_SEGURO.ID_RAMO` | Todo produto pertence a um ramo (CLASSIFICA) |
+| `ITEM_COBERTURA.ID_APOLICE` / `ID_PRODUTO` | Relação N:N entre apólices e produtos, com o valor da cobertura |
+
+Todas as FKs são `NOT NULL`, pois a participação mínima do lado dependente é 1.
+
+Restrições aplicadas
+- **`UNIQUE`:** `ID_CPF_CNPJ`, `ID_CPF`, `ID_SUSEP`, `ID_NUMERO_APOLICE` e `ID_NUMERO_SINISTRO`, para evitar duplicidade de documentos e números de negócio.
+- **`NULL` permitido:** `DT_NASCIMENTO` (clientes), `ID_SUSEP` (colaboradores) e `QT_VALOR_INDENIZACAO` (a indenização pode ser calculada depois do registro do sinistro).
+- **`NOT NULL`:** todos os demais campos, conforme o diagrama.
+- **`DEFAULT 0`:** `QT_DESCONTO_APLICADO`, para apólice sem desconto.
+- **Campos de tipo e indicador:** `TP_CLIENTE` (F/J), `IN_CADASTRO_ATIVO` e `IN_APROVACAO_GERENCIAL` (S/N) usam `CHAR(1)`.
+
+Decisões arquiteturais
+- **Chave substituta (`ID_*`):** FKs menores e proteção contra mudança de dados naturais, que continuam protegidos por `UNIQUE`.
+- **Uma tabela por entidade:** evita repetição de dados, como o nome do ramo em cada produto.
+- **Tabela associativa apenas no N:N:** os demais relacionamentos são 1:N e viram só uma FK.
+- **`COLABORADORES` única:** o mesmo colaborador atende apólices e sinistros, sem cadastro duplicado.
+- **Mínimo 1 em `ITEM_COBERTURA`:** o SQL padrão não garante que toda apólice tenha ao menos um item. Isso fica a cargo de trigger ou da aplicação.
   
-
 ### 1.6 Proposta de Arquitetura Analítica para BI e IA
 
 **1\.   Informações Estratégicas para a Gestão da Organização**    
