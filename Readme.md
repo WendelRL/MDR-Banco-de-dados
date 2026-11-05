@@ -35,7 +35,7 @@ P5 - O catalogo de produtos estava bagunçado, muitos com algumas informações 
   **Endereço:** Av. Celso Garcia, 3798 \- CEP:03.064-000 \- Tatuapé, São Paulo  
   **Formas de Contato:** [mrdcorretora@gmail.com](mailto:mrdcorretora@gmail.com) \- (11) 2227-9120   
   [Pasta com fotos de comprovação da instituição](IMG/IMG).  
-- **Responsável pela organização:** Marcio Roberto Diniz \- **telefone** de quem atendeu o grupo — o professor pode entrar em contato para confirmar as informações.
+- **Responsável pela organização:** Marcio Roberto Diniz \- (11) 99847-5070 - diniz@mrdcorretora.com.
 
 **Relato da entrevista**
 
