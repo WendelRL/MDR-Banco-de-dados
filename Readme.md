@@ -62,8 +62,14 @@ Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, 
 - RN12 \- Atendimento de sinistros \- Orientar o cliente quando ocorre um acidente, roubo ou outro evento coberto pelo seguro.  
 - RN13 \- Pós-venda \- Manter relacionamento com o cliente e acompanhar sua satisfação.  
 - RN14 \- Gestão administrativa \- Organizar documentos, contratos, comissões, relatórios e atividades internas.  
-- **Inclua os processos que existem na organização**, mesmo os que não estão ligados aos problemas declarados — o banco de dados reúne todos os dados da organização (ver *Escopo do sistema* acima).  
-- **Justifique os processos prováveis não incluídos:** se um processo comum nesse tipo de organização ficou de fora (ex.: compras de fornecedores, cancelamentos, escala da equipe), explique por quê — por exemplo, a organização não o realiza, ou ele é feito por terceiros.
+- **Processos que existem na organização** PR01 - Envio de documentação - O corretor envia ao setor administrativo a documentação completa do cliente (corretor, cliente, documentos, data de envio).
+PR02 - Cadastro de proposta/apólice - Após receber os documentos, o administrativo cadastra a proposta ou apólice (cliente, produto, corretor, data).
+PR03 - Controle de produção - O administrativo registra a venda na planilha "TAREFAS ADM" por corretor, tipo de produto, data e cliente, e acompanha a produção diária, semanal e mensal.
+PR04 - Emissão da apólice e lançamento no SIAV - Com a apólice emitida, a venda é lançada no sistema SIAV, que também serve para consultar clientes e produção (apólice, data de emissão, status).
+PR05 - Lançamento e repasse de comissões - A comissão tem percentual combinado entre seguradora, empresa e colaborador e é repassada nos dias 15 e 30 de cada mês, com emissão de nota fiscal e cálculo de imposto e IOF (colaborador, percentual, valor, data, nota fiscal). |
+PR06 - Atendimento substituto - Na ausência do colaborador responsável, outro colaborador atende o cliente e repassa o atendimento ao responsável (cliente, quem atendeu, responsável, data). 
+PR07 - Pagamento de salários - Os salários são pagos todo dia 05 (colaborador, data).  
+- **Justificativa dos processos prováveis não incluídos:** se um processo comum nesse tipo de organização ficou de fora (ex.: compras de fornecedores, cancelamentos, escala da equipe), explique por quê — por exemplo, a organização não o realiza, ou ele é feito por terceiros.
 
 **Requisitos**
 
