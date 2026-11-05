@@ -193,10 +193,11 @@ SINISTROS   ID_COLABORADOR   COLABORADORES   ID_COLABORADOR   ATENDE_SINISTRO
 ### 1.4 Processo de Normalização (1FN, 2FN e 3FN)
 
 
-- **1FN:** *eliminação de grupos repetitivos/atributos multivalorados.*  
-- **2FN:** *eliminação de dependências parciais.*  
-- **3FN:** *eliminação de dependências transitivas.*  
-- **Justificativa do processo:** *por que cada forma normal foi necessária no seu caso.*
+- **1FN:** Eliminação de grupos repetitivos e atributos multivalorados: Todos os atributos contêm apenas valores atómicos (indivisíveis). Por exemplo, os contactos telefónicos e os endereços de correio eletrónico foram isolados nas respetivas colunas de clientes e colaboradores. Os itens de cobertura de uma apólice, que poderiam gerar repetição de colunas numa tabela única, foram isolados numa tabela associativa dedicada (item_cobertura), garantindo que cada registo represente um único valor por célula.  
+- **2FN:** Eliminação de dependências parciais: A base de dados encontra-se em 1FN e todas as colunas não-chave dependem inteiramente da chave primária (composta ou simples). Em tabelas com chaves primárias auto-incrementais (id_colaborador, id_cliente, id_apolice), todos os atributos não-chave dependem funcionalmente e por completo da respetiva chave primária, não existindo dependências parciais em chaves compostas.  
+- **3FN:** Eliminação de dependências transitivas: A base de dados encontra-se em 2FN e nenhum atributo não-chave depende de outro atributo não-chave. Por exemplo, na tabela de apólices (apolices_propostas), os dados referentes ao cliente, ao produto e ao colaborador não são armazenados diretamente como texto redundante, mas sim através de chaves estrangeiras (id_cliente, id_produto, id_colaborador). Os detalhes do produto (como o nome da seguradora ou o ramo) residem exclusivamente nas respetivas tabelas dimensionais (produtos_seguro e ramos_seguro), impedindo que alterações em atributos descritivos criem inconsistências sistémicas.  
+- **Justificativa do processo:** A aplicação da normalização foi necessária para espelhar as regras de negócio complexas da corretora (gestão de prémios, comissões divididas, sinistros e auditoria de clientes sem compras).
+Ao separar entidades críticas como Clientes, Produtos, Apólices e Sinistros, evitou-se a duplicação de dados cadastrais e assegurou-se que as restrições de integridade (FOREIGN KEY com RESTRICT e CASCADE) e as validações financeiras (CHECK para valores monetários positivos) operassem de forma limpa, auditável e sem risco de corrupção de dados administrativos.
 
 ### 1.5 Justificativas Técnicas das Decisões
 
