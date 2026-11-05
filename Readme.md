@@ -327,7 +327,7 @@ As **demais restrições de integridade** — obrigatoriedade (`NOT NULL`), unic
 
 ## 3\. Script SQL Completo e Massa de Dados
 
-Script SQL 
+[Script SQL](docs/script.sql) 
 
 
 ## 6\. Uso de Inteligência Artificial
