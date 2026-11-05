@@ -153,30 +153,9 @@ Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, 
 
 *O DER deve seguir a notação do **brModelo**, como no exemplo abaixo:*
 
-![Exemplo de DER na notação do brModelo](Exemplo_DER.png)
+[Diagrama de Entidade-Relacionamento (DER)](Modelo-Diagrama.png).
 
-| Elemento | Como aparece | No exemplo |
-| :---- | :---- | :---- |
-| **Entidade** | retângulo | `Entity 1` a `Entity 5` |
-| **Relacionamento** | losango | `Rel 33`, `Rel 34` |
-| **Cardinalidade mínima e máxima** | par `(mín, máx)` dos dois lados de cada relacionamento | `(0, 1)`, `(1, n)`, `(0, n)` |
-| **Autorrelacionamento** | losango ligado duas vezes à mesma entidade, cada lado com sua cardinalidade | `Rel 33`, em `Entity 3` |
-| **Atributo identificador (chave)** | círculo **preenchido** | `Chave 1`, `Chave 2`, `Chave 3`, `Chave 4` |
-| **Identificador composto** | mais de um círculo preenchido na mesma entidade (obrigatório) — ou mais de um atributo sublinhado, se os atributos estiverem listados no retângulo | `Chave 50` \+ `Chave 51`, em `Entity 5` |
-| **Atributo comum** | círculo **vazio** | `Attribute 10`, `Attribute 30` |
-| **Atributo multivalorado** | círculo vazio com a cardinalidade do atributo | `Attribute 11 (1, n)` |
-| **Atributo composto** *(representação gráfica opcional)* | atributo com seus próprios subatributos ligados a ele | `Attribute 21`, com `attr 211` e `attr 212` |
-| **Generalização/especialização** | triângulo ligando a entidade genérica às especializadas. **A indicação de totalidade e disjunção não é obrigatória** | `Entity 1` → `Entity 2` e `Entity 3` |
-| **Entidade associativa** | retângulo envolvendo o losango do relacionamento, que passa a poder se relacionar com outras entidades e ter atributos próprios | `Rel 53`, com `Attribute 530` |
-
- 
-
-- **Representação gráfica opcional:** atributos compostos podem ser desenhados como no exemplo (subatributos ligados ao atributo), mas não é obrigatório; o mesmo vale para a indicação de totalidade/disjunção da generalização/especialização.  
-- **Atributos de entidades:** podem ser representados como no brModelo (círculos ligados à entidade, como no exemplo) **ou** listados dentro do retângulo da entidade — nesse caso, o **identificador deve estar sublinhado**.  
-- **Atributos de relacionamentos e de entidades associativas:** **somente** como no brModelo, ligados ao losango ou à entidade associativa (como `Attribute 530`) — não podem ser listados dentro de um retângulo.  
-- **Sem chaves estrangeiras** — elas só aparecem no modelo lógico (seção 2).
-
-*Informe no README **em qual software ou aplicativo o DER foi criado**.*
+O software utilizado para a criação do modelo DER foi o BRModelo.
 
 **Caso A — mesma organização da Entrega 1**
 
@@ -187,7 +166,6 @@ Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, 
 | *ex.: N:N entre PEDIDO e PRODUTO sem quantidade* | *criada a entidade associativa ITEM\_PEDIDO com quantidade e preço praticado* | *sem ela não é possível saber quanto de cada produto foi vendido* |
 | *ex.: chaves estrangeiras desenhadas no DER* | *removidas — passam a aparecer só no modelo lógico (seção 2\)* | *FK é decisão do modelo lógico, não do conceitual* |
 
- 
 
 *Se o grupo discordar de algum apontamento e mantiver o modelo como estava, registre isso na tabela com a justificativa. Apontamento não citado na tabela é tratado como não corrigido.*
 
@@ -215,7 +193,23 @@ Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, 
 
 ### 1.3 Definição de Chaves Primárias e Estrangeiras
 
-*Liste as PKs e FKs de cada tabela (serve de base para a justificativa técnica abaixo).*
+CHAVES PRIMARIAS
+CLIENTES            ID_CLIENTES            SIMPLES
+COLABORADORES       ID_COLABORADORES       SIMPLES
+RAMO_SEGURO         ID_RAMO                SIMPLES
+PRODUTOS_SEGURO     ID_PRODUTOS            SIMPLES
+APOLICES_PROPOSTAS  ID_APOLICE             SIMPLES
+SINISTROS           ID_SINISTRO            SIMPLES
+ITEM_COBERTURA      ID_APOLICE+ID_PRODUTO  COMPOSTO
+
+CHAVES ESTRANGEIRAS
+PRODUTOS_SEGURO   ID_RAMO   RAMOS_SEGURO   ID_RAMO   CLASSIFICA
+APOLICES_PROPOSTAS   ID_CLIENTE   CLIENTES   ID_CLIENTE   CONTRATA
+APOLICES_PROPOSTAS   ID_COLABORADOR   COLABORADORES   ID_COLABORADOR   ATENDE_APOLICE
+ITEM_COBERTURA   ID_APOLICE   APOLICE_PROPOSTAS   ID_APOLICE   ITEM_COBERTURA
+ITEM_COBERTURA   ID_PRODUTO   PRODUTOS_SEGURO   ID_PRODUTO   ITEM_COBERTURA
+SINISTROS   ID_APOLICE   APOLICE_PROPOSTAS   ID_COLABORADOR   GERA
+SINISTROS   ID_COLABORADOR   COLABORADORES   ID_COLABORADOR   ATENDE_SINISTRO
 
 ### 1.4 Processo de Normalização (1FN, 2FN e 3FN)
 
@@ -235,7 +229,6 @@ Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, 
 - Justificar as **restrições** aplicadas (unicidade, obrigatoriedade, valores permitidos etc.), citando o código da regra de negócio (`RNxx`) que cada restrição implementa, quando houver.  
 - Justificar **decisões arquiteturais** gerais do modelo.  
   
-
 
 ### 1.6 Proposta de Arquitetura Analítica para BI e IA
 
@@ -390,3 +383,7 @@ O repositório deve conter:
 | **Justificativa da escolha final**  | A IA escolhida foi o Gemini, por familiaridade da IA e pela facilidade que tenho um usar |
 | **Reflexão crítica** | O processo de criação da proposta analítica de BI, IA e da tabela de rastreabilidade evidencia que a automação e a geração de artefatos técnicos — como a dedução de cardinalidades por restrições de script e não por regras de negócio documentadas (RNxx) — geram divergências perigosas face à documentação oficial e ao DER. Isso demonstra que a documentação gerada só é confiável mediante uma checagem cruzada rigorosa da equipa. Além disso, falhas como a ausência de restrições lógicas (`CHECK`) e o uso de massas de dados desproporcionais ao porte real da organização comprometem a fiabilidade dos relatórios e modelos, exigindo curadoria humana constante para garantir que a arquitetura analítica reflita a realidade do negócio  |
 
+| **Ferramenta e etapa** | Utilizei o Claude para que ele fizesse uma conferência do diagrama que fiz a mão no BrModelo
+| **Motivação** | Analisar e verificar se havia algum campo ou erro na hora da digitação e, também, se houve algum tipo de falha de direcionamento.
+| **Prompt(s) utilizados** | Utilizei o prompt - realizar a análise do DER em anexo e verificar se existe algum tipo de erro ortográfico e, também, se há alguma falha na estruturação do diagrama em anexo.
+| **Resposta recebida** | Ele informou que havia uma ligação que estava diferente do que estava descrito no diagrama e também informou alguns erros de ortografias solicitando a correção.
