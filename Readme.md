@@ -29,7 +29,7 @@
   **CNPJ:** 33.518.915/0001-42  
   **Endereço:** Av. Celso Garcia, 3798 \- CEP:03.064-000 \- Tatuapé, São Paulo  
   **Formas de Contato:** [mrdcorretora@gmail.com](mailto:mrdcorretora@gmail.com) \- (11) 2227-9120   
-  comprove que a organização existe e que o grupo teve acesso a ela — fotos do local/da visita, link da organização no Google, endereço completo e forma de contato. **Prefira o perfil da organização no Google Meu Negócio (Google Business Profile)**, que é a comprovação mais direta; site e redes sociais complementam. As fotos só são aceitas como **arquivos JPG ou PNG dentro do repositório** — fotos hospedadas fora dele (Google Drive, Imgur, anexos colados no editor do GitHub etc.) não são consideradas.  
+  [Pasta com fotos de comprovação da instituição](IMG/IMG).  
 - **Responsável pela organização:** Marcio Roberto Diniz \- **telefone** de quem atendeu o grupo — o professor pode entrar em contato para confirmar as informações.
 
 **Relato da entrevista (todos os grupos)**
