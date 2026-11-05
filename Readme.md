@@ -16,8 +16,6 @@
 
 ### 1.1 Revisão do Modelo Conceitual
 
-*(obrigatória, sem peso próprio — mas todo o restante da entrega é construído e avaliado sobre este modelo: um erro que permanecer no DER revisado se propaga para a conversão, a normalização, o modelo lógico e o script SQL)*
-
 **Caracterização da organização** 
 
 - **Nome e natureza da organização:** A organização escolhida foi a M.R.D \- Saúde e corretora de Seguros Ltda.  
@@ -28,7 +26,7 @@ P2 - Não havia também uma organização de tarefas, onde funcionários que nã
 P3 - O cadastro de clientes não havia uma base a ser seguida, sendo feito fora de ordem e, na maioria das vezes, informações vinham faltando e/ou não eram imputadas na hora de passar para o sistema.
 P4 - As propostas de apólices geravam sinistros que não haviam direcionamento na organização, as vezes caindo para o gestor, as vezes caindo para colaboradores que não estavam na área de controle de sinistros, ocasionando percas de rota na hora da distribuição.
 P5 - O catalogo de produtos estava bagunçado, muitos com algumas informações que não lhes eram corretas, fazendo com que na hora de realizar uma venda de seguro fosse passado ao cliente algumas informações na qual o plano não cobria ou não pertencia ao grupo específico do seguro.
-- **Escopo do sistema:** o banco de dados deve reunir **todos os dados da organização**, não só os de um setor ou processo. Mesmo que os problemas declarados se concentrem em uma área, o modelo não pode servir somente a um recorte (ex.: só o estoque de uma clínica, deixando de fora pacientes e atendimentos).  
+- **Escopo do sistema:** o banco de dados reune todos os dados da organização.  
 - **Justificativa da escolha**: Escolhemos essa organização pelo devido fato de ser uma seguradora, onde apresenta casos de escolha no seguro de um cliente, sabendo que ela tem um banco de dados confuso, resolvemos escolher ela pelo fato de ver a oportunidade de ajustar estes problemas e também por ser algo que está ativamente no mercado. Um dos nossos integrantes do grupo, o Vinicius, trabalha na empresa, onde foi comprovado pela foto na pasta levantamento da entrevista.
 - **Evidências da organização:**  
   **CNPJ:** 33.518.915/0001-42  
