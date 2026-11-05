@@ -1,4 +1,4 @@
-## 1\. Relatório Técnico Final
+## Relatório Técnico Final
 
 ### Integrantes
 
@@ -32,7 +32,7 @@
   [Pasta com fotos de comprovação da instituição](IMG/IMG).  
 - **Responsável pela organização:** Marcio Roberto Diniz \- **telefone** de quem atendeu o grupo — o professor pode entrar em contato para confirmar as informações.
 
-**Relato da entrevista (todos os grupos)**
+**Relato da entrevista**
 
 **Resumo do Levantamento:** Quem: Márcio Roberto Diniz, sócio da empresa e responsável pela área financeira. A entrevista foi realizada por Vinicius, integrante do grupo de forma presencial no dia 11/09 (sexta-feira), na sala e mesa de trabalho do sócio, dentro da empresa.  
 O que foi levantado: As vendas são registradas após o corretor enviar a documentação completa ao setor administrativo, que cadastra as propostas e apólices. O controle é feito por uma planilha Excel chamada “TAREFAS ADM”, organizando vendas por corretor, produto, data e cliente. Após a emissão da apólice, as informações são lançadas no sistema SIAV, utilizado para consultar clientes, registrar vendas e controlar comissões.  
@@ -42,17 +42,6 @@ Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, 
 
 **Levantamento da Entrevista:** [Levantamento](levantamento/levantamento.md)
 
-**Nível de detalhe — processos, requisitos e regras de negócio (todos os grupos)**
-
-*Frases genéricas como "o sistema deve permitir cadastrar cliente" são **superficiais** e não bastam. Em processos, requisitos e regras, indique **quais dados** estão envolvidos — todos os campos que aparecem no trabalho (DER, dicionário de dados, modelo lógico):*
-
-| Superficial | Detalhado |
-| :---- | :---- |
-| *O sistema deve permitir cadastrar cliente.* | *RF03 — O sistema deve permitir cadastrar cliente com nome completo, CPF, telefone, e-mail e endereço (logradouro, número, bairro, CEP).* |
-| *O cliente faz o pedido.* | *O garçom anota no pedido a mesa, o número da pulseira do cliente e, para cada item, o produto, a quantidade e as observações.* |
-| *O cliente precisa estar cadastrado.* | *RN05 — Todo cliente deve ter CPF válido e único; telefone e nome completo são obrigatórios.* |
-
- 
 
 **Processos de negócio** 
 
@@ -73,7 +62,7 @@ Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, 
 - **Inclua os processos que existem na organização**, mesmo os que não estão ligados aos problemas declarados — o banco de dados reúne todos os dados da organização (ver *Escopo do sistema* acima).  
 - **Justifique os processos prováveis não incluídos:** se um processo comum nesse tipo de organização ficou de fora (ex.: compras de fornecedores, cancelamentos, escala da equipe), explique por quê — por exemplo, a organização não o realiza, ou ele é feito por terceiros.
 
-**Requisitos (todos os grupos)**
+**Requisitos**
 
 - **Requisitos Funcionais:** o que o sistema precisa **fazer**, com os dados envolvidos (ex.: "o sistema deve permitir registrar uma venda com data, cliente, vendedor, forma de pagamento e, para cada item, produto, quantidade e preço unitário"). Cada um com um código (`RF01`, `RF02`…).  
 - **Requisitos Não Funcionais:** características de qualidade (ex.: desempenho, segurança, usabilidade, disponibilidade). Cada um com um código (`RNF01`, `RNF02`…).  
@@ -108,7 +97,7 @@ Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, 
 - **Validação**  
 - Os requisitos foram levantados considerando as atividades típicas de uma corretora de seguros e devem ser confirmados com o sócio responsável pela empresa..
 
-**Regras de negócio (todos os grupos)**
+**Regras de negócio**
 
 - **Regras típicas de uma corretora de seguros:** As Regras Operacionais e de Processo  
 - Regras que regem a execução diária das atividades e o fluxo das informações no sistema.  
@@ -119,26 +108,27 @@ Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, 
 - O cancelamento de registros (pedidos, agendamentos ou cadastros) nunca apaga o dado do banco de dados; altera-se o status para "Cancelado" mantendo o histórico de auditoria (rastreabilidade).  
 - Cancelamentos efetuados após determinado estágio do processo exigem justificativa obrigatória e/ou aprovação de um supervisor.  
 - **Gestão de Estoque e Disponibilidade:**  
-- **Não é permitida a confirmação de venda/serviço para itens cujo estoque disponível seja zero ou insuficiente (ou bloqueio automático com aviso de backorder).**  
-- **A reserva de estoque é válida por um tempo limite (ex.: 15 a 30 minutos) durante o checkout; se o pagamento não for confirmado, o item retorna ao estoque geral.**  
+- Não é permitida a confirmação de venda/serviço para itens cujo estoque disponível seja zero ou insuficiente (ou bloqueio automático com aviso de backorder).  
+- A reserva de estoque é válida por um tempo limite (ex.: 15 a 30 minutos) durante o checkout; se o pagamento não for confirmado, o item retorna ao estoque geral.  
 - **Pagamentos e Recebimento:**  
-- **A liberação para entrega ou prestação do serviço depende da confirmação prévia do meio de pagamento (cartão, Pix, boleto compensado).**  
-- **B. Restrições Legais, Regulatórias e Organizacionais**  
-- **Regras impostas por legislação externa ou por diretrizes de governança e controle interno.**  
+- A liberação para entrega ou prestação do serviço depende da confirmação prévia do meio de pagamento (cartão, Pix, boleto compensado).
+-  
+- **Restrições Legais, Regulatórias e Organizacionais**  
+- Regras impostas por legislação externa ou por diretrizes de governança e controle interno.  
 - **Proteção de Dados Pessoais (LGPD):**  
-- **Coleta restrita aos dados estritamente necessários para a execução do serviço/contrato.**  
-- **Omissão/mascaramento de dados sensíveis (ex.: CPF, telefone, endereço) para usuários sem nível de permissão adequado.**  
-- **Direito ao esquecimento/anonimização: a pedido do titular, dados pessoais identificáveis devem ser anonimizados, mantendo-se apenas registros fiscais/legais obrigatórios.**  
+- Coleta restrita aos dados estritamente necessários para a execução do serviço/contrato.  
+- Omissão/mascaramento de dados sensíveis (ex.: CPF, telefone, endereço) para usuários sem nível de permissão adequado.  
+- Direito ao esquecimento/anonimização: a pedido do titular, dados pessoais identificáveis devem ser anonimizados, mantendo-se apenas registros fiscais/legais obrigatórios. 
 - **Fiscal e Contábil:**  
-- **Emissão de Nota Fiscal (NFe/NFS-e): Toda transação financeira concluída deve obrigatoriamente gerar o arquivo XML/DANFE correspondente e ser enviada ao fisco e ao cliente.**  
-- **O valor total da nota fiscal deve corresponder exatamente à soma dos itens, frete e descontos aplicados no pedido.**  
+- Emissão de Nota Fiscal (NFe/NFS-e): Toda transação financeira concluída deve obrigatoriamente gerar o arquivo XML/DANFE correspondente e ser enviada ao fisco e ao cliente.  
+- O valor total da nota fiscal deve corresponder exatamente à soma dos itens, frete e descontos aplicados no pedido.  
 - **Normas Sanitárias e de Segurança (Conforme o Setor):**  
-- **Controle obrigatório de validade e lote de insumos/produtos.**  
-- **Registro de temperatura/condições de armazenamento quando aplicável (ex.: alimentação, farmácia).**  
+- Controle obrigatório de validade e lote de insumos/produtos.  
+- Registro de temperatura/condições de armazenamento quando aplicável (ex.: alimentação, farmácia).  
 - **Idade Mínima e Capacidade Legal:**  
-- **Proibição de venda de produtos restritos (bebidas alcoólicas, medicamentos controlados, etc.) ou cadastro de usuários menores de idade sem consentimento dos pais/responsáveis legais.**  
+- Proibição de venda de produtos restritos (bebidas alcoólicas, medicamentos controlados, etc.) ou cadastro de usuários menores de idade sem consentimento dos pais/responsáveis legais.  
 - **Controle de Acesso e Perfil de Usuário (RBAC):**  
-- **Acesso segregado por cargos/funções (ex.: operador visualiza pedidos; gerente autoriza descontos/reembolsos; administrador gerencia permissões e configurações de sistema).**   
+- Acesso segregado por cargos/funções (ex.: operador visualiza pedidos; gerente autoriza descontos/reembolsos; administrador gerencia permissões e configurações de sistema).   
 - **Justifique as regras prováveis não incluídas:**  
 - Nem todas as regras comuns em organizações semelhantes se aplicam ao contexto específico da organização analisada. As exclusões são justificadas a seguir:  
 - Regra Comum no Setor / Tipo de Organização \- Motivo da Não Inclusão / Exclusão do Escopo  
@@ -149,17 +139,11 @@ Volume de vendas: Segundo o entrevistado, as vendas variam conforme o período, 
 - Multi Aprovação Hierárquica de Descontos \- Incompatível com o porte: Trata-se de uma organização de pequeno/médio porte com estrutura enxuta, onde a política de preço é fixa e os atendentes têm autonomia limitada sem necessidade de fluxos complexos de alçada. 
 
 
-**Notação do DER conceitual (todos os grupos — Caso A e Caso B)**
-
-*O DER deve seguir a notação do **brModelo**, como no exemplo abaixo:*
+**Notação do DER conceitual**
 
 [Diagrama de Entidade-Relacionamento (DER)](Modelo-Diagrama.png).
 
 O software utilizado para a criação do modelo DER foi o BRModelo.
-
-**Caso A — mesma organização da Entrega 1**
-
-*Apresente o **DER conceitual revisado**, na notação descrita acima. A revisão parte da correção da Entrega 1 recebida pelo grupo — o DER e os demais itens acima. Para cada apontamento da correção, registre o que foi feito:*
 
 | Apontamento da correção da E1 | O que mudou no trabalho | Por quê |
 | :---- | :---- | :---- |
@@ -167,11 +151,9 @@ O software utilizado para a criação do modelo DER foi o BRModelo.
 | *ex.: chaves estrangeiras desenhadas no DER* | *removidas — passam a aparecer só no modelo lógico (seção 2\)* | *FK é decisão do modelo lógico, não do conceitual* |
 
 
-*Se o grupo discordar de algum apontamento e mantiver o modelo como estava, registre isso na tabela com a justificativa. Apontamento não citado na tabela é tratado como não corrigido.*
 
 ### 1.2 Conversão do Modelo Conceitual para o Modelo Lógico
 
-*(vale 7,5%)*
 
 - **Entidades → Tabelas:** Cada entidade virou uma tabela, com chave primária substituta `INT AUTO_INCREMENT`.   
 - **Atributos → Colunas:** Regras de conversão aplicadas:  
@@ -213,7 +195,6 @@ SINISTROS   ID_COLABORADOR   COLABORADORES   ID_COLABORADOR   ATENDE_SINISTRO
 
 ### 1.4 Processo de Normalização (1FN, 2FN e 3FN)
 
-*(vale 7,5%)*
 
 - **1FN:** *eliminação de grupos repetitivos/atributos multivalorados.*  
 - **2FN:** *eliminação de dependências parciais.*  
@@ -269,8 +250,6 @@ Decisões arquiteturais
 
    **2\.   Indicadores e Métricas Gerenciais (KPIs)**  
 
- 
-
 *  ***Contratos Fechados:** Volume total de contratos fechados por dia e por mês.*    
      
 *  ***Taxa de Conversão:** Percentual de cotações convertidas em apólices emitidas.*    
@@ -303,8 +282,6 @@ Decisões arquiteturais
 *  ***Previsão de Demanda:** Modelos para prever o volume de propostas e dimensionar a equipe de Atendimento.*   
     
     
-    
-  
 
 
  **5\.      Tabela de Rastreabilidade**
@@ -354,21 +331,6 @@ As **demais restrições de integridade** — obrigatoriedade (`NOT NULL`), unic
 
 Script SQL 
 
-## 5\. Repositório GitHub
-
-*(vale 13% — Documentação e Repositório)*
-
-O repositório deve conter:
-
-- Relatório Técnico (no `README.md`)  
-- **Dicionário de Dados** atualizado, no modelo do arquivo `02-03g_Exemplo_Dicionario_Dados.pdf` e com as restrições de integridade de cada coluna (obrigatoriedade, unicidade, valores permitidos, valor padrão), em **um único arquivo HTML** no repositório. **Exceção — turma de GTI:** o dicionário é apresentado em **um único arquivo Markdown (`.md`) separado do README**, seguindo o mesmo modelo do `02-03g_Exemplo_Dicionario_Dados.pdf`.  
-- Diagramas (DER revisado e modelo lógico)  
-- Levantamento (pasta `levantamento`, recomendada) e evidências da organização e da entrevista (fotos JPG ou PNG)  
-- Script SQL completo em arquivo `.sql` (de preferência na pasta `docs`)  
-- **Histórico de commits** que evidencie o desenvolvimento ao longo do tempo (evite um único commit final)  
-- **Evidências de colaboração entre os membros do grupo:** é a listagem de commits do repositório, que deve estar **equilibrada entre os integrantes** — a quantidade de commits deve se distribuir de forma proporcional entre todos os membros do grupo, cada um fazendo commits com a própria conta do GitHub. O integrante precisa ser **identificável na conta do GitHub**: o nome configurado na conta deve ser compatível com o nome do aluno na tabela de Integrantes, onde também deve constar o usuário do GitHub de cada um
-
----
 
 ## 6\. Uso de Inteligência Artificial
 
