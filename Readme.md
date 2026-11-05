@@ -69,7 +69,12 @@ PR04 - Emissão da apólice e lançamento no SIAV - Com a apólice emitida, a ve
 PR05 - Lançamento e repasse de comissões - A comissão tem percentual combinado entre seguradora, empresa e colaborador e é repassada nos dias 15 e 30 de cada mês, com emissão de nota fiscal e cálculo de imposto e IOF (colaborador, percentual, valor, data, nota fiscal). |
 PR06 - Atendimento substituto - Na ausência do colaborador responsável, outro colaborador atende o cliente e repassa o atendimento ao responsável (cliente, quem atendeu, responsável, data). 
 PR07 - Pagamento de salários - Os salários são pagos todo dia 05 (colaborador, data).  
-- **Justificativa dos processos prováveis não incluídos:** se um processo comum nesse tipo de organização ficou de fora (ex.: compras de fornecedores, cancelamentos, escala da equipe), explique por quê — por exemplo, a organização não o realiza, ou ele é feito por terceiros.
+- **Justificativa dos processos prováveis não incluídos:** Folha de pagamento e cálculo de salários - Os salários são pagos todo dia 05, mas o cálculo e o controle são rotina de RH e contabilidade, fora do banco de dados de seguros. 
+Escrituração fiscal e apuração de impostos e IOF - Foi citada na entrevista, mas é feita pela contabilidade, fora deste banco. O banco guarda apenas o valor da comissão. 
+Compras de fornecedores - A corretora vende serviços e não mantém estoque; compras administrativas (material de escritório, assinaturas) não fazem parte da gestão de seguros. 
+Escala, ponto e férias da equipe - Não foi citado na entrevista e é rotina de RH, sem relação com a venda e a gestão das apólices. 
+Marketing e divulgação (site, redes sociais) | Não é um problema de gestão de informações, que é o foco do banco de dados. 
+Financeiro geral da empresa (contas a pagar e a receber, fluxo de caixa) - É tratado pelo sócio responsável pelo financeiro, em ferramentas próprias, e não envolve os dados de clientes, apólices e sinistros.
 
 **Requisitos**
 
