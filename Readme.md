@@ -165,13 +165,10 @@ O software utilizado para a criação do modelo DER foi o BRModelo.
 * Atributos obrigatórios receberam `NOT NULL`. Ficaram opcionais: `telefone`, `email`, `cidade`, `estado`, `descricao` e `premio_item`.  
 * Atributos únicos receberam `UNIQUE`: `email` do colaborador, `cpf_cnpj`, `nome_ramo`, `numero_apolice` e `numero_sinistro`.  
 * `valor_pago` tem `DEFAULT 0.00`.  
--   
+   
 - **Relacionamentos → Chaves:** *Cada relacionamento 1:N virou uma FK na tabela do lado N. .*  
 - **Cardinalidades:** Todas as relações são 1:N. O mínimo (1,1) do lado N vem do `NOT NULL` na FK. O (0,n) do lado 1 existe porque nada obriga o pai a ter filhos.  
-- **Generalização/especialização:** O que o script mostra: não há tabelas de especialização. Cliente PF/PJ foi tratado com **tabela única** (`clientes`) e a coluna discriminadora `tipo_cliente`.  
-* Se o DER **não** tem generalização, escrevam: “O DER não possui generalização/especialização; não houve conversão desse tipo.”  
-* Se o DER mostra PF e PJ como especializações de Cliente, escrevam: “Estratégia de tabela única, porque PF e PJ compartilham quase todos os atributos (nome, `cpf_cnpj`, contato) e a mesma relação com apólices; a coluna `tipo_cliente` distingue o tipo.”  
-- 
+- **Generalização/especialização:** O que o script mostra: não há tabelas de especialização. Cliente PF/PJ foi tratado com **tabela única** (`clientes`) e a coluna discriminadora `tipo_cliente`.     
 
 ### 1.3 Definição de Chaves Primárias e Estrangeiras
 
