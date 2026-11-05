@@ -2,7 +2,7 @@
 * Luiz Felipe da Silva Almeida - 04907315 - @Luiz55555
 * Isabely Toledo dos Santos - 46852760 - @isabelytoledodossantos-prog
 * Vinicius dos Santos Maia - 47416301 - @VINICIUS-MAIA2003
-* Wendel Andriol de Melo - 47411724 - @WendelRL
+* Wendel Andrioli de Melo - 47411724 - @WendelRL
 * Júlio César Pereira da Silva 48359904 - @Juliotdpenna
 * Luana Silva Rocha dos Santos - 48828297 - @Luana-Rocha
 
