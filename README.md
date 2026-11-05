@@ -183,7 +183,7 @@ Restrições de negócios
 | RN16 | Salário do corretor não pode ser negativo; datas de nascimento coerentes | CHECK (salario >= 0); auditoria de idade mínima (18 anos) |
 | RN17 | Avaliação de risco é solicitada por gerente e realizada por administrador | Tabelas SOLICITACAO e REALIZA_AVALIACAO |
 
- Rastreabilidade
+Rastreabilidade
 | P1 — Falta de visão de renovações (apólices vencendo) | APOLICE, CLIENTE_APOLICE, CLIENTE |
 | P2 — Sinistros sem controle de status e valor indenizado | SINISTRO, APOLICE, PRODUTO |
 | P3 — Atendimentos sem acompanhamento de SLA | ATENDIMENTO, SINISTRO_ATENDIMENTO, SINISTRO |
