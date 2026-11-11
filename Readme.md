@@ -380,10 +380,10 @@ As **demais restrições de integridade** — obrigatoriedade (`NOT NULL`), unic
 | **Trechos rejeitados ou corrigidas** | Após uma análise não foi rejeitado nenhum trecho ou corrigida |
 | **Justificativa da escolha final**  | A IA escolhida foi o Gemini, por familiaridade da IA e pela facilidade que tenho um usar |
 | **Reflexão crítica** | O processo de criação da proposta analítica de BI, IA e da tabela de rastreabilidade evidencia que a automação e a geração de artefatos técnicos — como a dedução de cardinalidades por restrições de script e não por regras de negócio documentadas (RNxx) — geram divergências perigosas face à documentação oficial e ao DER. Isso demonstra que a documentação gerada só é confiável mediante uma checagem cruzada rigorosa da equipa. Além disso, falhas como a ausência de restrições lógicas (`CHECK`) e o uso de massas de dados desproporcionais ao porte real da organização comprometem a fiabilidade dos relatórios e modelos, exigindo curadoria humana constante para garantir que a arquitetura analítica reflita a realidade do negócio  |
-
-Link Youtube
-https://youtu.be/1sS89fOmd5s
 | **Ferramenta e etapa** | Utilizei o Claude para que ele fizesse uma conferência do diagrama que fiz a mão no BrModelo
 | **Motivação** | Analisar e verificar se havia algum campo ou erro na hora da digitação e, também, se houve algum tipo de falha de direcionamento.
 | **Prompt(s) utilizados** | Utilizei o prompt - realizar a análise do DER em anexo e verificar se existe algum tipo de erro ortográfico e, também, se há alguma falha na estruturação do diagrama em anexo.
 | **Resposta recebida** | Ele informou que havia uma ligação que estava diferente do que estava descrito no diagrama e também informou alguns erros de ortografias solicitando a correção.
+
+Link Youtube
+https://youtu.be/1sS89fOmd5s
